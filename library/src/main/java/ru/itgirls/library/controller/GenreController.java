@@ -5,17 +5,17 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import ru.itgirls.library.dto.AuthorDto;
-import ru.itgirls.library.service.AuthorService;
+import ru.itgirls.library.dto.GenreDto;
+import ru.itgirls.library.service.GenreService;
 
 @RestController
 @RequiredArgsConstructor
-public class AuthorController {
+public class GenreController {
 
-    private final AuthorService authorService;
+    private final GenreService genreService;
 
-    @GetMapping("/authors/{id}")
-    AuthorDto getAuthorById(@PathVariable("id") Long id) {
-        return authorService.getAuthorById(id);
+    @GetMapping("/genres/{id}")
+    GenreDto getGenreById(@PathVariable("id") Long id){
+        return genreService.getGenreById(id);
     }
 }
