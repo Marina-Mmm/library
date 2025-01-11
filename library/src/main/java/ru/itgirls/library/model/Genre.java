@@ -22,6 +22,6 @@ public class Genre {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany (mappedBy="genre", fetch=FetchType.EAGER)
+    @OneToMany (mappedBy="genre", fetch=FetchType.LAZY)
     private Set<Book> books;
 }
