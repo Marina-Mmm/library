@@ -41,8 +41,8 @@ public class AuthorServiceImpl implements AuthorService{
     }
 
     @Override
-    public List<AuthorDto> getAuthorsByName (String name){
-        List<Author> authors = authorRepository.findAuthorsByName(name);
+    public List<AuthorDto> getAuthorsByNameBySQL (String name){
+        List<Author> authors = authorRepository.findAuthorsByNameBySQL(name);
         if (authors.isEmpty()){
             return Collections.emptyList();
         }

@@ -9,5 +9,5 @@ import java.util.List;
 public interface AuthorService {
 
     AuthorDto getAuthorById(Long id);
-    List<AuthorDto> getAuthorsByName(String name);
+    List<AuthorDto> getAuthorsByNameBySQL(String name);
 }
