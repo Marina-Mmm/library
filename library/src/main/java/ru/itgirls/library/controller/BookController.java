@@ -18,6 +18,6 @@ public class BookController {
 
     @GetMapping("/books")
     List<BookDto> getBooksByName(@RequestParam("name") String name) {
-        return bookService.getByNameV1(name);
+        return bookService.getBooksByName(name);
     }
 }

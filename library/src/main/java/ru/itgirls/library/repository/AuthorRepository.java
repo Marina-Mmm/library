@@ -3,5 +3,9 @@ package ru.itgirls.library.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import ru.itgirls.library.model.Author;
 
+import java.util.List;
+
 public interface AuthorRepository extends JpaRepository<Author, Long> {
+
+    List<Author> findAuthorsByName (String name);
 }

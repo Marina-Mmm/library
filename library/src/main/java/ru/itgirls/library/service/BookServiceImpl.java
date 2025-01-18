@@ -15,7 +15,7 @@ public class BookServiceImpl implements BookService{
 
     private final BookRepository bookRepository;
     @Override
-    public List<BookDto> getByNameV1(String name) {
+    public List<BookDto> getBooksByName(String name) {
         List<Book> books = bookRepository.findBooksByName(name);
         if (books.isEmpty()){
             return Collections.emptyList();

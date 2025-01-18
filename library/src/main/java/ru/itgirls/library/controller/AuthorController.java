@@ -2,20 +2,27 @@ package ru.itgirls.library.controller;
 
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.itgirls.library.dto.AuthorDto;
+import ru.itgirls.library.dto.BookDto;
 import ru.itgirls.library.service.AuthorService;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping ("/authors")
 public class AuthorController {
 
     private final AuthorService authorService;
 
-    @GetMapping("/authors/{id}")
+    @GetMapping("/{id}")
     AuthorDto getAuthorById(@PathVariable("id") Long id) {
         return authorService.getAuthorById(id);
+    }
+
+    @GetMapping()
+    List<AuthorDto> getAuthorsByName(@RequestParam("name") String name) {
+        return authorService.getAuthorsByName(name);
     }
 }

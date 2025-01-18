@@ -5,5 +5,6 @@ import ru.itgirls.library.dto.BookDto;
 import java.util.List;
 
 public interface BookService {
-    List<BookDto> getByNameV1(String name);
+
+    List<BookDto> getBooksByName(String name);
 }

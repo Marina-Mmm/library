@@ -5,8 +5,10 @@ import org.springframework.stereotype.Service;
 import ru.itgirls.library.dto.AuthorDto;
 import ru.itgirls.library.dto.BookDto;
 import ru.itgirls.library.model.Author;
+import ru.itgirls.library.model.Book;
 import ru.itgirls.library.repository.AuthorRepository;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -22,6 +24,34 @@ public class AuthorServiceImpl implements AuthorService{
     }
 
     private AuthorDto convertToDto(Author author) {
+        List<BookDto> bookDtoList = author.getBooks()
+                .stream()
+                .map(book -> BookDto.builder()
+                        .genre(book.getGenre().getName())
+                        .name(book.getName())
+                        .id(book.getId())
+                        .build()
+                ).toList();
+        return AuthorDto.builder()
+                .books(bookDtoList)
+                .id(author.getId())
+                .name(author.getName())
+                .surname(author.getSurname())
+                .build();
+    }
+
+    @Override
+    public List<AuthorDto> getAuthorsByName (String name){
+        List<Author> authors = authorRepository.findAuthorsByName(name);
+        if (authors.isEmpty()){
+            return Collections.emptyList();
+        }
+        return authors.stream()
+                .map(this::convertEntityToDto)
+                .toList();
+    }
+
+    private AuthorDto convertEntityToDto(Author author) {
         List<BookDto> bookDtoList = author.getBooks()
                 .stream()
                 .map(book -> BookDto.builder()
