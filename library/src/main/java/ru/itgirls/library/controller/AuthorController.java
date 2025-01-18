@@ -23,6 +23,6 @@ public class AuthorController {
 
     @GetMapping()
     List<AuthorDto> getAuthorsByName(@RequestParam("name") String name) {
-        return authorService.getAuthorsByNameBySQL(name);
+        return authorService.getAuthorsByName(name);
     }
 }

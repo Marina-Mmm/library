@@ -1,6 +1,11 @@
 package ru.itgirls.library.service;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import ru.itgirls.library.dto.AuthorDto;
 import ru.itgirls.library.dto.BookDto;
@@ -41,8 +46,16 @@ public class AuthorServiceImpl implements AuthorService{
     }
 
     @Override
-    public List<AuthorDto> getAuthorsByNameBySQL (String name){
-        List<Author> authors = authorRepository.findAuthorsByNameBySQL(name);
+    public List<AuthorDto> getAuthorsByName (String name){
+        Specification<Author> specification = Specification.where(new Specification<Author>() {
+            @Override
+            public Predicate toPredicate(Root<Author> root,
+                                         CriteriaQuery<?> query,
+                                         CriteriaBuilder criteriaBuilder) {
+                return  criteriaBuilder.equal(root.get("name"), name);
+            }
+        });
+        List<Author> authors = authorRepository.findAll(specification);
         if (authors.isEmpty()){
             return Collections.emptyList();
         }
