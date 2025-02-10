@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-
 public class AuthorCreateDto {
     private String name;
     private String surname;
