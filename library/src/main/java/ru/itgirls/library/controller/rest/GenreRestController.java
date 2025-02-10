@@ -1,4 +1,4 @@
-package ru.itgirls.library.controller;
+package ru.itgirls.library.controller.rest;
 
 
 import lombok.RequiredArgsConstructor;
@@ -9,7 +9,7 @@ import ru.itgirls.library.service.GenreService;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/genres")
-public class GenreController {
+public class GenreRestController {
 
     private final GenreService genreService;
 
@@ -18,7 +18,7 @@ public class GenreController {
         return genreService.getGenreById(id);
     }
 
-    @GetMapping()
+    @GetMapping("/name")
     GenreDto getGenresByName(@RequestParam("name") String name) {
         return genreService.getGenresByName(name);
     }
