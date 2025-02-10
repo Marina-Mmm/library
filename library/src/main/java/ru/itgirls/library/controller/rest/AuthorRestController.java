@@ -1,17 +1,19 @@
 package ru.itgirls.library.controller.rest;
 
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.itgirls.library.dto.AuthorCreateDto;
 import ru.itgirls.library.dto.AuthorDto;
 import ru.itgirls.library.dto.AuthorUpdateDto;
 import ru.itgirls.library.service.AuthorService;
-
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@SecurityRequirement(name = "library-users")
 @RequestMapping("/authors")
 public class AuthorRestController {
 
@@ -28,12 +30,12 @@ public class AuthorRestController {
     }
 
     @PostMapping()
-    AuthorDto createAuthor(@RequestBody AuthorCreateDto authorCreateDto) {
+    AuthorDto createAuthor(@RequestBody @Valid AuthorCreateDto authorCreateDto) {
         return authorService.createAuthor(authorCreateDto);
     }
 
     @PutMapping()
-    AuthorDto updateAuthor(@RequestBody AuthorUpdateDto authorUpdateDto) {
+    AuthorDto updateAuthor(@RequestBody @Valid AuthorUpdateDto authorUpdateDto) {
         return authorService.updateAuthor(authorUpdateDto);
     }
 

@@ -1,17 +1,19 @@
 package ru.itgirls.library.controller.rest;
 
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.itgirls.library.dto.BookCreateDto;
 import ru.itgirls.library.dto.BookDto;
 import ru.itgirls.library.dto.BookUpdateDto;
 import ru.itgirls.library.service.BookService;
-
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@SecurityRequirement(name = "library-users")
 @RequestMapping("/books")
 public class BookRestController {
 
@@ -23,12 +25,12 @@ public class BookRestController {
     }
 
     @PostMapping()
-    BookDto createBook(@RequestBody BookCreateDto bookCreateDto) {
+    BookDto createBook(@RequestBody @Valid BookCreateDto bookCreateDto) {
         return bookService.createBook(bookCreateDto);
     }
 
     @PutMapping()
-    BookDto updateBook(@RequestBody BookUpdateDto bookUpdateDto) {
+    BookDto updateBook(@RequestBody @Valid BookUpdateDto bookUpdateDto) {
         return bookService.updateBook(bookUpdateDto);
     }
 
