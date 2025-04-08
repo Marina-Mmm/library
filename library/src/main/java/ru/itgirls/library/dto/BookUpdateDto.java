@@ -1,21 +1,21 @@
 package ru.itgirls.library.dto;
 
-
-import com.fasterxml.jackson.annotation.JsonInclude;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class BookDto {
+public class BookUpdateDto {
+    @Positive
     private Long id;
+    @NotBlank(message = "You must specify the name.")
     private String name;
+    @NotBlank(message = "You must specify the surname.")
     private String genre;
-    private List<AuthorDto> authors;
 }
