@@ -1,8 +1,9 @@
 package ru.itgirls.library.model;
 
+
 import jakarta.persistence.*;
 import lombok.*;
-import java.util.Set;
+import ru.itgirls.library.security.Role;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -10,17 +11,18 @@ import java.util.Set;
 @Setter
 @Builder
 @Entity
-public class Author {
+@Table(name = "users_of_library")
+public class UserOfLibrary {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String name;
+    @Column(unique = true, nullable = false)
+    private String username;
 
     @Column(nullable = false)
-    private String surname;
+    private String password;
 
-    @ManyToMany(mappedBy = "authors")
-    private Set<Book> books;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 }
