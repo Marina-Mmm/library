@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    tools {
+        jdk 'jdk-21'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'homework27', url: 'https://github.com/Marina-Mmm/library.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh './mvnw clean package -DskipTests'
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                // Указываем путь до docker-compose.yml, если он находится в папке library
+                sh 'docker-compose -f library/docker-compose.yml build --build-arg JAR_FILE=target/library-0.0.1-SNAPSHOT.jar'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Указываем путь до docker-compose.yml, если он находится в папке library
+                sh 'docker-compose -f library/docker-compose.yml up -d'
+            }
+        }
+    }
+}
