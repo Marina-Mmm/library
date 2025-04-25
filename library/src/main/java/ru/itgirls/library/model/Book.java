@@ -1,13 +1,24 @@
 package ru.itgirls.library.model;
 
 import jakarta.persistence.*;
+<<<<<<< HEAD
 import lombok.*;
+=======
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+>>>>>>> master
 import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+<<<<<<< HEAD
 @Setter
+=======
+>>>>>>> master
 @Builder
 @Entity
 public class Book {
@@ -29,4 +40,8 @@ public class Book {
             inverseJoinColumns = @JoinColumn(name = "author_id", referencedColumnName = "id"),
             joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"))
     private Set<Author> authors;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master

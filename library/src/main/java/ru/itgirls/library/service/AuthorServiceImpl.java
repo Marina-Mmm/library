@@ -1,6 +1,7 @@
 package ru.itgirls.library.service;
 
 import lombok.RequiredArgsConstructor;
+<<<<<<< HEAD
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.lang.NonNull;
@@ -8,10 +9,15 @@ import org.springframework.stereotype.Service;
 import ru.itgirls.library.dto.AuthorCreateDto;
 import ru.itgirls.library.dto.AuthorDto;
 import ru.itgirls.library.dto.AuthorUpdateDto;
+=======
+import org.springframework.stereotype.Service;
+import ru.itgirls.library.dto.AuthorDto;
+>>>>>>> master
 import ru.itgirls.library.dto.BookDto;
 import ru.itgirls.library.model.Author;
 import ru.itgirls.library.repository.AuthorRepository;
 
+<<<<<<< HEAD
 import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -22,11 +28,19 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class AuthorServiceImpl implements AuthorService {
+=======
+import java.util.List;
+
+@Service
+@RequiredArgsConstructor
+public class AuthorServiceImpl implements AuthorService{
+>>>>>>> master
 
     private final AuthorRepository authorRepository;
 
     @Override
     public AuthorDto getAuthorById(Long id) {
+<<<<<<< HEAD
         log.info("Try to find author by id {}", id);
         Optional<Author> author = authorRepository.findById(id);
         if (author.isPresent()) {
@@ -37,6 +51,10 @@ public class AuthorServiceImpl implements AuthorService {
             log.error("Author with id {} hadn't been found by id.", id);
             throw new NoSuchElementException("No value present.");
         }
+=======
+        Author author = authorRepository.findById(id).orElseThrow();
+        return convertToDto(author);
+>>>>>>> master
     }
 
     private AuthorDto convertToDto(Author author) {
@@ -55,6 +73,7 @@ public class AuthorServiceImpl implements AuthorService {
                 .surname(author.getSurname())
                 .build();
     }
+<<<<<<< HEAD
 
     @Override
     public List<AuthorDto> getAuthorsByName(@NonNull String name) {
@@ -163,3 +182,6 @@ public class AuthorServiceImpl implements AuthorService {
                 .build();
     }
 }
+=======
+}
+>>>>>>> master

@@ -1,13 +1,24 @@
 package ru.itgirls.library.model;
 
 import jakarta.persistence.*;
+<<<<<<< HEAD
 import lombok.*;
+=======
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+>>>>>>> master
 import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+<<<<<<< HEAD
 @Setter
+=======
+>>>>>>> master
 @Builder
 @Entity
 public class Author {
@@ -23,4 +34,8 @@ public class Author {
 
     @ManyToMany(mappedBy = "authors")
     private Set<Book> books;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master
