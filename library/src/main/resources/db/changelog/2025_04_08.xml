@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet id="insert" author="Marina">
+        <sql>
+            Insert into users_of_library(username, password,role) values
+            ('admin@mail.ru', '$2a$10$8y8vCpxwrrRpSrSjJD6dz.swR4YM5B9wGzYjwh0KidODrAbfP6.Qi', 'ADMIN'),
+            ('user@mail.ru', '$2a$10$Q9.ZVa1nLDYtmwyOXHIk3.k5KlAPdps7aCNfkJ9Abpy7PDfXhMX4e', 'USER');
+        </sql>
+    </changeSet>
+</databaseChangeLog>
