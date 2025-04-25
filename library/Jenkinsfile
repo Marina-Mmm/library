@@ -14,19 +14,19 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh './mvnw clean package -DskipTests'
+                bat './mvnw clean package -DskipTests'
             }
         }
 
         stage('Docker Build') {
             steps {
-                sh 'docker-compose -f library/docker-compose.yml build --build-arg JAR_FILE=target/library-0.0.1-SNAPSHOT.jar'
+                bat 'docker-compose -f library/docker-compose.yml build --build-arg JAR_FILE=target/library-0.0.1-SNAPSHOT.jar'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'docker-compose -f library/docker-compose.yml up -d'
+                bat 'docker-compose -f library/docker-compose.yml up -d'
             }
         }
     }
