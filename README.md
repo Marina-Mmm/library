@@ -1,2 +1,2 @@
-![Снимок экрана 2025-04-26 023051](https://github.com/user-attachments/assets/df38a723-b78f-4a11-9d76-270f203a8970)
-![Снимок экрана 2025-04-26 023100](https://github.com/user-attachments/assets/41324ef0-8163-4190-b057-e24dad9a3aa1)
+![Снимок экрана 2025-04-27 211431](https://github.com/user-attachments/assets/c5878d4b-1eff-4e89-9da5-0441b8c97012)
+![Снимок экрана 2025-04-27 205604](https://github.com/user-attachments/assets/ffbc9d92-b6fe-4b5e-9190-b70699d97448)
