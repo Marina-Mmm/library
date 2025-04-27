@@ -5,7 +5,8 @@ pipeline {
         jdk 'jdk-21'
     }
 
-    environment{
+    environment {
+        DOCKER_CLI_EXPERIMENTAL = 'enabled'
         SONAR_TOKEN = credentials('SonarQubePwd')
     }
 
