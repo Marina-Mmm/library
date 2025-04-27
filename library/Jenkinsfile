@@ -5,10 +5,24 @@ pipeline {
         jdk 'jdk-21'
     }
 
+    environment{
+        SONAR_TOKEN =credentials('SonarQubePwd')
+    }
+
     stages {
         stage('Checkout') {
             steps {
                 git branch: 'homework27_1', url: 'https://github.com/Marina-Mmm/library.git'
+            }
+        }
+
+        stage('SonarQube'){
+            steps{
+                script{
+                    withSonarQubeEnv('Sonar'){
+                        bat 'call mvnw.cmd sonar:sonar -Dsonar.projectKey=library -Dsonar.token=%SONAR_TOKEN%'
+                    }
+                }
             }
         }
 
