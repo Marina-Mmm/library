@@ -22,7 +22,9 @@ pipeline {
                 script{
                     echo "SONAR_TOKEN: ${env.SONAR_TOKEN}"
                     withSonarQubeEnv('Sonar'){
-                        bat 'call mvnw.cmd sonar:sonar -Dsonar.projectKey=Library1 -Dsonar.token=%SONAR_TOKEN%'
+                        dir('library') {
+                            bat 'call mvnw.cmd sonar:sonar -Dsonar.projectKey=Library1 -Dsonar.token=%SONAR_TOKEN%'
+                        }
                     }
                 }
             }
