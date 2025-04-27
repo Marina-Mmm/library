@@ -20,7 +20,7 @@ pipeline {
             steps{
                 script{
                     withSonarQubeEnv('Sonar'){
-                        bat 'call mvnw.cmd sonar:sonar -Dsonar.projectKey=library -Dsonar.token=%SONAR_TOKEN%'
+                        bat 'call mvnw.cmd sonar:sonar -Dsonar.projectKey=Library1 -Dsonar.token=%SONAR_TOKEN%'
                     }
                 }
             }
